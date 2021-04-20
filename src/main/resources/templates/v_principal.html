@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>origen</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css?h=2290483064c89bcfca7d8ff6033f2577">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
+    <link rel="stylesheet" href="/fonts/fontawesome-all.min.css?h=320bd0471c3e8d6b9dd55c98e185506c">
+    <link rel="stylesheet" href="/fonts/font-awesome.min.css?h=320bd0471c3e8d6b9dd55c98e185506c">
+    <link rel="stylesheet" href="/fonts/material-icons.min.css?h=320bd0471c3e8d6b9dd55c98e185506c">
+    <link rel="stylesheet" href="/fonts/fontawesome5-overrides.min.css?h=320bd0471c3e8d6b9dd55c98e185506c">
+    <link rel="stylesheet" href="/css/-Login-form-Page-BS4-.css?h=029040ef307ec677827f7e04011acce5">
+    <link rel="stylesheet" href="/css/Footer-Basic.css?h=dad9bd825313085723de5d568e2a1607">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="/css/Navigation-Clean.css?h=a55568e56685cd552da4c33b013ffda1">
+    <link rel="stylesheet" href="/css/Pretty-Footer.css?h=8a5ecb781963bfde59df6f660963dd7f">
+    <link rel="stylesheet" href="/css/Sidebar-Menu-1.css?h=7b01e24c2a0a2234fbfda8a733dbbd36">
+    <link rel="stylesheet" href="/css/Sidebar-Menu.css?h=1bb7b8567a604b6542fb891ae4d84954">
+    <link rel="stylesheet" href="/css/styles.css?h=f0706af50e8786fb591dfb2a7a846979">
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-md sticky-top" id="heather">
+        <div class="container-fluid"><a class="navbar-brand" href="#"><img src="/img/LOGO%20HORIZONTAL.png?h=fba87b00e4e192f60693cbda6ab210ef"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1" style="height: 70;">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" id="user" href="producto_vendedor.html" style="height: 70;"><i class="fa fa-shopping-cart" id="vender" style="width: 50;height: 50;color: #641fa3;"></i></a></li>
+                    <li class="nav-item" id="user"><a class="nav-link" href="#" style="height: 70;color: #641fa3;">Usuario&nbsp;<i class="fa fa-user-circle" style="width: 50;height: 50;"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="Cuerpo">
+        <div id="wrapper">
+            <div id="sidebar-wrapper" style="background: #674172;">
+            <div class="col-md-4" >
+               
+                <ul class="sidebar-nav" >
+                    <li class="sidebar-brand"> <a style="font-size: 18px;color: #dcdcdc;text-align: left;">Tipos de Negocios</a></li>
+                    <li th:each="tipo: ${tipoList}"> <a th:href="@{/principal/}+${tipo.id}" style="color: #dcdcdc;" th:text="${tipo.nombre}" ></a></li>
+
+                </ul>
+       
+            </div>
+            </div>
+            <div class="page-content-wrapper">
+                <div class="container-fluid"><button class="btn" id="menu-toggle" type="button"><i class="fa fa-bars"></i>&nbsp;Tipo de Negocio</button>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div>
+                                <h1 class="text-center" th:text="${tipoNegocio.nombre}">Negocios&nbsp;</h1>
+                            </div>
+                            <p class="text-center"><em>Apoya y forma parte de este gran cambio!</em></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row text-center justify-content-center" id="row_tienda" style="margin: 5px;" >
+                        <div class="col-md-4 col-lg-3 col-xl-3 offset-lg-0 text-center"  th:each="negocio: ${negocioList}" data-aos="zoom-in" data-aos-duration="400" id="columna_1" style="border-radius: 20px;background: #f1e7fe;margin: 10px;"><img class="rounded img-fluid border" id="imagen_tienda_P" style="width: 287px;border-radius: 25px;" th:src="@{'/img/' + ${negocio.imagen}}"><label class="text-center" id="nombre_tienda" style="margin: 0px 0px 8px ;padding: 0px;" th:text="${negocio.nombre}"></label>
+                            <div class="row" >
+                                <div class="col"><label class="col-form-label" style="text-align: center;" th:text="${negocio.nombre}">Tipo_tienda</label></div>
+                                <div class="col-lg-12"><label class="col-form-label" th:text="${negocio.direccion}"></label></div>
+                                <div class="col text-center"><label class="col-form-label" th:text="${negocio.puntuacion}">puntaje_tienda</label></div>
+                                <div class="col-xl-12 text-center"><a class="btn btn-primary" role="button" th:href="@{/tienda/}+${negocio.id}">Ver</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div></div>
+                <footer>
+                    <div class="row">
+                        <div class="col-sm-6 col-md-4 footer-navigation">
+                            <h3><a href="#">Faztty</a></h3>
+                            <p class="text-left links"><a th:href="@{/principal/1}">Principal</a><strong> · </strong><a href="#">Carrito</a><strong> · </strong><a href="#">Términos</a><strong> · </strong><a href="#">Nosotros</a><strong>&nbsp;</strong></p>
+                            <p class="text-center company-name" style="color: rgb(100,31,163);">Faztty© 2021</p>
+                        </div>
+                        <div class="col-sm-6 col-md-4 footer-contacts">
+                            <div><i class="fa fa-phone footer-contacts-icon"></i>
+                                <p class="footer-center-info email text-left"> +51 999 888 456</p>
+                                <div><span class="fa fa-map-marker footer-contacts-icon"> </span>
+                                    <p><span class="new-line-span">Ciudad Universitaria</span> Lima, Perú</p>
+                                </div>
+                            </div>
+                            <div><i class="fa fa-envelope footer-contacts-icon"></i>
+                                <p> <a href="#" target="_blank" style="color: rgb(100, 31, 163);">faztty@company.com</a></p>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="col-md-4 footer-about">
+                            <h4>About us...</h4>
+                            <div class="social-links social-icons"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a><a href="#"><i class="fa fa-github"></i></a></div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <script src="/js/jquery.min.js?h=89312d34339dcd686309fe284b3f226f"></script>
+    <script src="/bootstrap/js/bootstrap.min.js?h=ba42258394f86cd7822f0e850e2d60b1"></script>
+    <script src="/js/bs-init.js?h=36ffa0191e9d112d6a97bac11fc65d8e"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="/js/Sidebar-Menu.js?h=799b9a88f11384c3d5b19774a5e8d1ed"></script>
+</body>
+
+</html>
