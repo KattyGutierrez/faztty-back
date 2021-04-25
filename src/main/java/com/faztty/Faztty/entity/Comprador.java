@@ -24,5 +24,29 @@ public class Comprador extends Usuario implements Serializable{
 	@Column(length = 30)
 	private String lastName;
 
+	public String getDni() {
+		return dni;
+	}
 
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	
 }

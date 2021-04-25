@@ -90,4 +90,5 @@ public class Negocio extends Usuario implements Serializable {
 		this.tipoNegocio = tipoNegocio;
 	}
 	
+	
 }

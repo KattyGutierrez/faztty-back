@@ -12,6 +12,7 @@ public class ProductoBean {
 	private Long puntuacion;
 	private String imagen;
 	private String categoria;
+	private Long catid;
 	public Long getId() {
 		return id;
 	}
@@ -53,6 +54,13 @@ public class ProductoBean {
 	}
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
+	}
+	
+	public Long getCatid() {
+		return catid;
+	}
+	public void setCatid(Long catid) {
+		this.catid = catid;
 	}
 	@Override
 	public String toString() {

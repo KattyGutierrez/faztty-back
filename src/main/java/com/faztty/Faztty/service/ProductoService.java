@@ -29,6 +29,7 @@ public class ProductoService {
 		Negocio n=repoNegocio.findById(idNegocio).get();
 		return repoProducto.findAllByCategoriaAndNegocioOrderByPuntuacionAsc(c,n);
 	}
+	
 	public Iterable<ProductoBean> getProductosBeanByCategoriaNegocio(Long idCategoria, Long idNegocio){
 		Categoria c=repoCategoria.findById(idCategoria).get();
 		Negocio n=repoNegocio.findById(idNegocio).get();
@@ -55,5 +56,34 @@ public class ProductoService {
 		return repoProducto.findAllByNegocioOrderByPuntuacionAsc(n);
 	}
 	
+	public Producto getProducto(Long idProducto) {
+		return repoProducto.findById(idProducto).get();
+	}
+	
+	public Producto agregarProducto(Long id_negocio,ProductoBean pb) {
+		Producto p = new Producto();
+		p.setCategoria(repoCategoria.findById(pb.getCatid()).get());
+		p.setImagen(pb.getImagen());
+		p.setMarca(pb.getMarca());
+		p.setNombre(pb.getNombre());
+		p.setPrecio(pb.getPrecio());
+		p.setPuntuacion((long)50);
+		p.setNegocio(repoNegocio.findById(id_negocio).get());
+		repoProducto.save(p);
+		
+		return p;
+	}
+	
+	public Producto modificarProducto(ProductoBean pb, Long id) {
+		Producto p= repoProducto.findById(id).get();
+		p.setCategoria(repoCategoria.findById(pb.getCatid()).get());
+		p.setImagen(pb.getImagen());
+		p.setMarca(pb.getMarca());
+		p.setNombre(pb.getNombre());
+		p.setPrecio(pb.getPrecio());
+		
+		repoProducto.save(p);
+		return p;
+	}
 	
 }
