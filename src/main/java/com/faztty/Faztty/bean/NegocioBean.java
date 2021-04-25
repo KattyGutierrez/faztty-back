@@ -2,10 +2,12 @@ package com.faztty.Faztty.bean;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class NegocioBean {
 	private String email;
 	private String password;
+	
 	private String username;
 	private String nombre;
 	private String direccion;

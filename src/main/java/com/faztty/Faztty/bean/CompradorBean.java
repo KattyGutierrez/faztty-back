@@ -1,14 +1,17 @@
 package com.faztty.Faztty.bean;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CompradorBean {
 	private String email;
 	private String password;
 	private String username;
-	private String firstname;
-	private String lastname;
+	@JsonProperty("firstName")
+	private String first_name;
+	@JsonProperty("lastName")
+	private String last_name;
 	private String dni;
 	public String getEmail() {
 		return email;
@@ -25,10 +28,10 @@ public class CompradorBean {
 	}
 
 	public String getLastname() {
-		return lastname;
+		return last_name;
 	}
 	public void setLastname(String lastname) {
-		this.lastname = lastname;
+		this.last_name = lastname;
 	}
 	public String getDni() {
 		return dni;
@@ -43,10 +46,10 @@ public class CompradorBean {
 		this.password = password;
 	}
 	public String getFirstname() {
-		return firstname;
+		return first_name;
 	}
 	public void setFirstname(String firstname) {
-		this.firstname = firstname;
+		this.first_name = firstname;
 	}
 	
 	
