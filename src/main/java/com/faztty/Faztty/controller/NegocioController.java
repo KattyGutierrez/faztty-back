@@ -108,8 +108,8 @@ public class NegocioController {
 	}
 	
 	@PostMapping({"/autentica"})
-	public Usuario login(@RequestBody UsuarioBean ub) {
-		return uService.autenticacion( ub.getUsername(),  ub.getPassword());
+	public UsuarioBean login(@RequestBody UsuarioBean ub) {
+		return uService.autenticacion(ub);
 	}
 	
 	//////////////////////////////////////////////////////////////

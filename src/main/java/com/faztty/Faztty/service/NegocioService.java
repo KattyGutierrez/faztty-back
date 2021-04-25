@@ -39,8 +39,8 @@ public class NegocioService {
 			n.setEmail(nb.getEmail());
 			n.setPassword("$2a$10$xBPpxqLBdUXblMGkCwadr.hsNVyJk04A3hb4Fcjn79YeYzAtYCZzC");
 			//n.setPassword((nb.getContra()));
-			n.setDireccion(nb.getDirec());
-			n.setImagen(nb.getImg());
+			n.setDireccion(nb.getDireccion());
+			n.setImagen(nb.getImagen());
 			n.setNombre(nb.getNombre());
 			n.setTipoNegocio(repoTipo.findById(nb.getTn()).get());
 			n.setRUC(nb.getRuc());

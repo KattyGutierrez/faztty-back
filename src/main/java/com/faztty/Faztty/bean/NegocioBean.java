@@ -1,27 +1,25 @@
 package com.faztty.Faztty.bean;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class NegocioBean {
 	private String email;
-	private String contra;
+	private String password;
 	private String username;
 	private String nombre;
-	private String direc;
+	private String direccion;
 	private Long tn;
 	private String descripcion;
 	private String ruc;
-	private String img;
+	private String imagen;
 	public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getContra() {
-		return contra;
-	}
-	public void setContra(String contra) {
-		this.contra = contra;
-	}
+
 	public String getUsername() {
 		return username;
 	}
@@ -34,12 +32,7 @@ public class NegocioBean {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getDirec() {
-		return direc;
-	}
-	public void setDirec(String direc) {
-		this.direc = direc;
-	}
+
 	public Long getTn() {
 		return tn;
 	}
@@ -58,11 +51,25 @@ public class NegocioBean {
 	public void setRuc(String ruc) {
 		this.ruc = ruc;
 	}
-	public String getImg() {
-		return img;
+	public String getPassword() {
+		return password;
 	}
-	public void setImg(String img) {
-		this.img = img;
+	public void setPassword(String password) {
+		this.password = password;
 	}
+	public String getDireccion() {
+		return direccion;
+	}
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+	public String getImagen() {
+		return imagen;
+	}
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
+
+	
 	
 }

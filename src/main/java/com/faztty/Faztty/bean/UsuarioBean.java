@@ -1,9 +1,13 @@
 package com.faztty.Faztty.bean;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class UsuarioBean {
 	private String tipo;
 	private String username;
 	private String password;
+	private Long id;
 	public String getTipo() {
 		return tipo;
 	}
@@ -22,5 +26,12 @@ public class UsuarioBean {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 	
 }

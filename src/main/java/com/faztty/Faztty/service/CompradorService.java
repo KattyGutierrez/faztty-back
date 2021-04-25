@@ -25,7 +25,7 @@ public class CompradorService {
 			c.setPassword("$2a$10$xBPpxqLBdUXblMGkCwadr.hsNVyJk04A3hb4Fcjn79YeYzAtYCZzC");
 			//c.setPassword((cb.getContra()));
 			c.setDni(cb.getDni());
-			c.setFirstName(cb.getName());
+			c.setFirstName(cb.getFirstname());
 			c.setLastName(cb.getLastname());
 			repoComprador.save(c);
 			return c;
