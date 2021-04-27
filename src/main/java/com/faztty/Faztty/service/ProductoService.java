@@ -2,6 +2,7 @@ package com.faztty.Faztty.service;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Blob;
@@ -40,12 +41,15 @@ public class ProductoService {
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	public Iterable<Producto> getProductosByCategoriaNegocio(Long idCategoria, Long idNegocio){
+	public Iterable<Producto> getProductosByCategoriaNegocio(Long idCategoria, Long idNegocio) throws FileNotFoundException, SQLException, IOException{
 		Categoria c=repoCategoria.findById(idCategoria).get();
 		Negocio n=repoNegocio.findById(idNegocio).get();
 		Iterable<Producto> listp = repoProducto.findAllByCategoriaAndNegocioOrderByPuntuacionAsc(c,n);
-		for(Producto p: listp)
+		for(Producto p: listp) {
+			p.setImagen_ruta(downloadFoto3(p.getImagen_blob()));
 			p.setImagen_blob(null);
+		}
+			
 		return listp;
 	}
 	
@@ -69,17 +73,23 @@ public class ProductoService {
 		return pbL;
 		
 	}
-	public Iterable<Producto> getProductosByNegocio(Long idNegocio){
+	public Iterable<Producto> getProductosByNegocio(Long idNegocio) throws FileNotFoundException, SQLException, IOException{
 		
 		Negocio n=repoNegocio.findById(idNegocio).get();
 		Iterable<Producto> listp = repoProducto.findAllByNegocioOrderByPuntuacionAsc(n);
-		for(Producto p: listp)
+		for(Producto p: listp) {
+			//System.out.println(p.getImagen_blob());
+			//if(p.getImagen_blob()!=null)
+				p.setImagen_ruta(downloadFoto3(p.getImagen_blob()));
 			p.setImagen_blob(null);
+			
+		}
 		return listp;
 	}
 	
-	public Producto getProducto(Long idProducto) {
+	public Producto getProducto(Long idProducto) throws FileNotFoundException, SQLException, IOException {
 		Producto p = repoProducto.findById(idProducto).get();
+		//p.setImagen_ruta(downloadFoto3(p.getImagen_blob()));
 		p.setImagen_blob(null);
 		return p;
 	}
@@ -108,6 +118,7 @@ public class ProductoService {
 		
 		repoProducto.save(p);
 		p.setImagen_blob(null);
+		
 		return p;
 	}
 
@@ -120,14 +131,17 @@ public class ProductoService {
 
 			Session session = entityManager.unwrap(Session.class);
 			Blob blob = session.getLobHelper().createBlob(fis, convert(archivo).length());
+			
 			String imagen = archivo.getOriginalFilename();
 			
 			p.setImagen(imagen);
 			p.setImagen_blob(blob);
 			
+			
 
 			repoProducto.save(p);
 			p.setImagen_blob(null);
+			p.setImagen_ruta(downloadFoto2(archivo));
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -155,6 +169,28 @@ public class ProductoService {
 		}
 		bean.setFoto(cadena);
 		return bean;
+	}
+	public String downloadFoto2(MultipartFile archivo) throws SQLException, FileNotFoundException, IOException {
+		FileInputStream fis = new FileInputStream(convert(archivo));
+
+		Session session = entityManager.unwrap(Session.class);
+		Blob blob = session.getLobHelper().createBlob(fis, convert(archivo).length());
+		String cadena = "../assets/img/producto.png";
+		if(blob!=null) {
+			System.out.println("Entrando...");
+			byte[] bytes = blob.getBytes(1, (int) blob.length());
+			cadena = "data:"+archivo.getContentType()+";base64,"+Base64.getEncoder().encodeToString(bytes);
+		}
+		return cadena;
+	}
+	public String downloadFoto3(Blob blob) throws SQLException, FileNotFoundException, IOException {
+		String cadena = "../assets/img/producto.png";
+		if(blob!=null) {
+			System.out.println("Entrando...");
+			byte[] bytes = blob.getBytes(1, (int) blob.length());
+			cadena = "data:imagen/jpg;base64,"+Base64.getEncoder().encodeToString(bytes);
+		}
+		return cadena;
 	}
 	
 }

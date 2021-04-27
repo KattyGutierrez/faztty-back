@@ -1,5 +1,7 @@
 package com.faztty.Faztty.controller;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.SQLException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,7 +78,7 @@ public class NegocioController {
 		return coService.getComprador(id);
 	}
 	@GetMapping({"/productosByNegocio/{id_negocio}"})
-	public Iterable<Producto> consultaProductoByNegocio(@PathVariable Long id_negocio) {
+	public Iterable<Producto> consultaProductoByNegocio(@PathVariable Long id_negocio) throws FileNotFoundException, SQLException, IOException {
 		return pService.getProductosByNegocio(id_negocio);
 	}
 	@GetMapping({"/categoria"})
@@ -84,12 +86,12 @@ public class NegocioController {
 		return cService.getCategorias();
 	}
 	@GetMapping({"/productosByCategoria/{id_negocio}/{id_categoria}"})
-	public Iterable<Producto> consultaProductoByCategoria(@PathVariable Long id_negocio, @PathVariable Long id_categoria) {
+	public Iterable<Producto> consultaProductoByCategoria(@PathVariable Long id_negocio, @PathVariable Long id_categoria) throws FileNotFoundException, SQLException, IOException {
 		return pService.getProductosByCategoriaNegocio(id_categoria, id_negocio);
 	}
 	
 	@GetMapping({"/producto/{id}"})
-	public Producto consultaProducto(@PathVariable Long id) {
+	public Producto consultaProducto(@PathVariable Long id) throws FileNotFoundException, SQLException, IOException {
 		return pService.getProducto(id);
 	}
 	
@@ -148,7 +150,7 @@ public class NegocioController {
 	}
 
 	@GetMapping({"/tienda/{id1}"})
-	public String tienda(@PathVariable Long id1,Model model) {
+	public String tienda(@PathVariable Long id1,Model model) throws FileNotFoundException, SQLException, IOException {
 
 
 		model.addAttribute("negocio", nService.getNegocio(id1));
@@ -158,7 +160,7 @@ public class NegocioController {
 	}
 	
 	@GetMapping({"/tienda/{id1}/categoria/{id2}"})
-	public String tiendacategoria(@PathVariable Long id1,@PathVariable Long id2,Model model) {
+	public String tiendacategoria(@PathVariable Long id1,@PathVariable Long id2,Model model) throws FileNotFoundException, SQLException, IOException {
 
 		for(Categoria c:cService.getCategorias()) {
 			System.out.print(c.nombre);
@@ -171,7 +173,7 @@ public class NegocioController {
 	
 	
 	@GetMapping({"/mitienda"})
-	public String mitienda(Model model) {
+	public String mitienda(Model model) throws FileNotFoundException, SQLException, IOException {
 
 		model.addAttribute("negocio", nService.getNegocio(3L));
 		model.addAttribute("productoList",pService.getProductosByNegocio(3L)) ;
@@ -180,7 +182,7 @@ public class NegocioController {
 	}
 	
 	@GetMapping({"/mitienda/categoria/{id2}"})
-	public String mitienda(@PathVariable Long id2,Model model) {
+	public String mitienda(@PathVariable Long id2,Model model) throws FileNotFoundException, SQLException, IOException {
 
 		model.addAttribute("negocio", nService.getNegocio(3L));
 		model.addAttribute("productoList",pService.getProductosByCategoriaNegocio(id2, 3L)) ;

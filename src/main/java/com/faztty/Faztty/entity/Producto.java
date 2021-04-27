@@ -42,6 +42,9 @@ public class Producto implements Serializable {
 	@Column()
 	private Blob imagen_blob;
 	
+	@Column()
+	private String imagen_ruta;
+	
 	
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -125,6 +128,16 @@ public class Producto implements Serializable {
 	public void setImagen_blob(Blob imagen_blob) {
 		this.imagen_blob = imagen_blob;
 	}
+
+	public String getImagen_ruta() {
+		return imagen_ruta;
+	}
+
+	public void setImagen_ruta(String imagen_ruta) {
+		this.imagen_ruta = imagen_ruta;
+	}
+	
+	
 	
 	
 }
