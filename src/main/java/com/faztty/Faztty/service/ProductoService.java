@@ -1,10 +1,23 @@
 package com.faztty.Faztty.service;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.sql.Blob;
+import java.sql.SQLException;
+import java.util.Base64;
 import java.util.LinkedHashSet;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.faztty.Faztty.bean.FotoBean;
 import com.faztty.Faztty.bean.ProductoBean;
 import com.faztty.Faztty.entity.Categoria;
 import com.faztty.Faztty.entity.Negocio;
@@ -23,11 +36,17 @@ public class ProductoService {
 
 	@Autowired
 	NegocioRepository repoNegocio;
+	
+	@PersistenceContext
+	private EntityManager entityManager;
 
 	public Iterable<Producto> getProductosByCategoriaNegocio(Long idCategoria, Long idNegocio){
 		Categoria c=repoCategoria.findById(idCategoria).get();
 		Negocio n=repoNegocio.findById(idNegocio).get();
-		return repoProducto.findAllByCategoriaAndNegocioOrderByPuntuacionAsc(c,n);
+		Iterable<Producto> listp = repoProducto.findAllByCategoriaAndNegocioOrderByPuntuacionAsc(c,n);
+		for(Producto p: listp)
+			p.setImagen_blob(null);
+		return listp;
 	}
 	
 	public Iterable<ProductoBean> getProductosBeanByCategoriaNegocio(Long idCategoria, Long idNegocio){
@@ -53,11 +72,16 @@ public class ProductoService {
 	public Iterable<Producto> getProductosByNegocio(Long idNegocio){
 		
 		Negocio n=repoNegocio.findById(idNegocio).get();
-		return repoProducto.findAllByNegocioOrderByPuntuacionAsc(n);
+		Iterable<Producto> listp = repoProducto.findAllByNegocioOrderByPuntuacionAsc(n);
+		for(Producto p: listp)
+			p.setImagen_blob(null);
+		return listp;
 	}
 	
 	public Producto getProducto(Long idProducto) {
-		return repoProducto.findById(idProducto).get();
+		Producto p = repoProducto.findById(idProducto).get();
+		p.setImagen_blob(null);
+		return p;
 	}
 	
 	public Producto agregarProducto(Long id_negocio,ProductoBean pb) {
@@ -70,7 +94,7 @@ public class ProductoService {
 		p.setPuntuacion((long)50);
 		p.setNegocio(repoNegocio.findById(id_negocio).get());
 		repoProducto.save(p);
-		
+		p.setImagen_blob(null);
 		return p;
 	}
 	
@@ -83,7 +107,54 @@ public class ProductoService {
 		p.setPrecio(pb.getPrecio());
 		
 		repoProducto.save(p);
+		p.setImagen_blob(null);
 		return p;
+	}
+
+	public Producto uploadFoto(MultipartFile archivo, Long id) {
+
+		Producto p= repoProducto.findById(id).get();
+		try {
+
+			FileInputStream fis = new FileInputStream(convert(archivo));
+
+			Session session = entityManager.unwrap(Session.class);
+			Blob blob = session.getLobHelper().createBlob(fis, convert(archivo).length());
+			String imagen = archivo.getOriginalFilename();
+			
+			p.setImagen(imagen);
+			p.setImagen_blob(blob);
+			
+
+			repoProducto.save(p);
+			p.setImagen_blob(null);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return p;
+	}
+	
+	public static File convert(MultipartFile file) throws IOException {
+		File convFile = new File(file.getOriginalFilename());
+		convFile.createNewFile();
+		FileOutputStream fos = new FileOutputStream(convFile);
+		fos.write(file.getBytes());
+		fos.close();
+		return convFile;
+	}
+
+	public FotoBean downloadFoto(Long id) throws SQLException {
+		FotoBean bean = new FotoBean(); 
+		Producto p= repoProducto.findById(id).get();
+		String cadena = "";
+		if(p.getImagen_blob()!=null) {
+			System.out.println("Entrando...");
+			byte[] archivo = p.getImagen_blob().getBytes(1, (int) p.getImagen_blob().length());
+			cadena = Base64.getEncoder().encodeToString(archivo);
+		}
+		bean.setFoto(cadena);
+		return bean;
 	}
 	
 }

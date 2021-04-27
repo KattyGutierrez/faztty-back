@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import java.sql.Blob;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -38,6 +39,11 @@ public class Producto implements Serializable {
 	@Column(length = 30)
 	private String imagen;
 	
+	@Column()
+	private Blob imagen_blob;
+	
+	
+
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idNegocio", referencedColumnName = "id")
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -110,6 +116,14 @@ public class Producto implements Serializable {
 
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
+	}
+	
+	public Blob getImagen_blob() {
+		return imagen_blob;
+	}
+
+	public void setImagen_blob(Blob imagen_blob) {
+		this.imagen_blob = imagen_blob;
 	}
 	
 	

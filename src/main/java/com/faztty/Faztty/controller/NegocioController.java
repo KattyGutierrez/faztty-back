@@ -1,12 +1,16 @@
 package com.faztty.Faztty.controller;
 
+import java.sql.SQLException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.ui.Model;
 
 
@@ -15,6 +19,7 @@ import com.faztty.Faztty.entity.Producto;
 import com.faztty.Faztty.entity.TipoNegocio;
 import com.faztty.Faztty.entity.Usuario;
 import com.faztty.Faztty.bean.CompradorBean;
+import com.faztty.Faztty.bean.FotoBean;
 import com.faztty.Faztty.bean.NegocioBean;
 import com.faztty.Faztty.bean.ProductoBean;
 import com.faztty.Faztty.bean.UsuarioBean;
@@ -112,6 +117,18 @@ public class NegocioController {
 		return uService.autenticacion(ub);
 	}
 	
+	@PostMapping("/uploadFotoProducto")
+	public Producto uploadFotoProducto(@RequestParam("archivo") MultipartFile archivo,
+			@RequestParam("producto_id") Long id) {
+		return pService.uploadFoto(archivo, id);
+	}
+	
+	@GetMapping("/downloadFotoProducto/{id_producto}")
+	public FotoBean downloadFotoProducto(@PathVariable Long id_producto) throws SQLException {
+		return pService.downloadFoto(id_producto);
+	}
+	
+	
 	//////////////////////////////////////////////////////////////
 	@GetMapping({"/principal/{id}"})
 	public String login(@PathVariable Long id,Model model) {
@@ -170,5 +187,7 @@ public class NegocioController {
 		model.addAttribute("categoriaList",cService.getCategorias()) ;
 		return "producto_vendedor";
 	}
+	
+	
 
 }
