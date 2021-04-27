@@ -89,7 +89,7 @@ public class ProductoService {
 	
 	public Producto getProducto(Long idProducto) throws FileNotFoundException, SQLException, IOException {
 		Producto p = repoProducto.findById(idProducto).get();
-		//p.setImagen_ruta(downloadFoto3(p.getImagen_blob()));
+		p.setImagen_ruta(downloadFoto3(p.getImagen_blob()));
 		p.setImagen_blob(null);
 		return p;
 	}
