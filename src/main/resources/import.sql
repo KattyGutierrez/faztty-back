@@ -10,6 +10,7 @@ insert into `usuario` (tipo, id, email, password, ruc, nombre,direccion,imagen,p
 insert into `usuario` (tipo, id, email, password, ruc, nombre,direccion,imagen,puntuacion,id_tipo_negocio)  values ('N',4, 'mcastro2@utmo.com','$2a$10$xBPpxqLBdUXblMGkCwadr.hsNVyJk04A3hb4Fcjn79YeYzAtYCZzC', '11604816111','Cicala y Catita', "Calle Las Flores 33", 'ccc.jpg', 87,1);
 insert into `usuario` (tipo, id, email, password, ruc, nombre,direccion,imagen,puntuacion,id_tipo_negocio)  values ('N',5, 'osstern100@bing.com','$2a$10$xBPpxqLBdUXblMGkCwadr.hsNVyJk04A3hb4Fcjn79YeYzAtYCZzC','21604812111', 'Minimarket Casimiro', "Av Marina 445" ,'mnmcasim.jpg', 98,2);
 insert into `usuario` (tipo, id, email, password, ruc, nombre,direccion,imagen,puntuacion,id_tipo_negocio)  values ('N',6, 'mariciell0@bing.com','$2a$10$xBPpxqLBdUXblMGkCwadr.hsNVyJk04A3hb4Fcjn79YeYzAtYCZzC', '21654816121','Repostera Maricielo', "Av Marina 411" ,'bdmc.jpg', 67,2);
+insert into `usuario` (tipo, id, email, password, ruc, nombre,direccion,imagen,puntuacion,id_tipo_negocio)  values ('N',7, 'panaderia@bing.com','$2a$10$xBPpxqLBdUXblMGkCwadr.hsNVyJk04A3hb4Fcjn79YeYzAtYCZzC', '21654816551','Panaderia Rosita', "Av Escardó 660" ,'panaderia.jpg', 65,3);
 
 
 insert into `categoria` (id, nombre, descripcion) values (1,'Lacteo','Productos derivados de la leche');
