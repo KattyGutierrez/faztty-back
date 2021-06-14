@@ -76,7 +76,7 @@ public class ProductoService {
 	public Iterable<Producto> getProductosByNegocio(Long idNegocio) throws FileNotFoundException, SQLException, IOException{
 		
 		Negocio n=repoNegocio.findById(idNegocio).get();
-		Iterable<Producto> listp = repoProducto.findAllByNegocioOrderByPuntuacionAsc(n);
+		Iterable<Producto> listp = repoProducto.findAllByNegocioOrderByIdAsc(n);
 		for(Producto p: listp) {
 			//System.out.println(p.getImagen_blob());
 			//if(p.getImagen_blob()!=null)
@@ -121,7 +121,13 @@ public class ProductoService {
 		
 		return p;
 	}
-
+	
+	public Producto eliminarProducto(Long id) {
+		Producto p= repoProducto.findById(id).get();
+		repoProducto.delete(p);	
+		return p;
+	}
+	
 	public Producto uploadFoto(MultipartFile archivo, Long id) {
 
 		Producto p= repoProducto.findById(id).get();

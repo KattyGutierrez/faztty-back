@@ -114,6 +114,11 @@ public class NegocioController {
 		return pService.modificarProducto( pb,id_producto);
 	}
 	
+	@PostMapping({"/eliminarProducto/"})
+	public Producto eliminarProducto(@RequestBody ProductoBean pb) {
+		return pService.eliminarProducto( pb.getId());
+	}
+	
 	@PostMapping({"/autentica"})
 	public UsuarioBean login(@RequestBody UsuarioBean ub) {
 		return uService.autenticacion(ub);
@@ -124,6 +129,7 @@ public class NegocioController {
 			@RequestParam("producto_id") Long id) {
 		return pService.uploadFoto(archivo, id);
 	}
+	
 	
 	@GetMapping("/downloadFotoProducto/{id_producto}")
 	public FotoBean downloadFotoProducto(@PathVariable Long id_producto) throws SQLException {

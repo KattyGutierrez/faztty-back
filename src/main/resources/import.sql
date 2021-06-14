@@ -1,34 +1,34 @@
 
 
-insert into `tipo_negocio` (id, nombre, descripcion) values (1,'Bodega','Productos del día a día. Diferentes tipos de producto');
-insert into `tipo_negocio` (id, nombre, descripcion) values (2,'Dulcería','Productos de consumo rápido. Dulces, snacks, etc.');
-insert into `tipo_negocio` (id, nombre, descripcion) values (3,'Panadería','Productos relacionados con repostería y afines.');
+insert into `tipo_negocio` (id, nombre, descripcion) values (1,'Grande','Grande establecimientos con diverso tipo de ropa y/o calzado');
+insert into `tipo_negocio` (id, nombre, descripcion) values (2,'Mediano','Empresas enfocadas a una categoría de producto en particular');
+insert into `tipo_negocio` (id, nombre, descripcion) values (3,'Pequeño','Emprendimientos pequeños, enfocados a un producto en particular');
 
 insert into `usuario` (tipo, id, email, password, dni,first_name, last_name, username) values ('C',1, 'rosa@unmsm.com','$2a$10$xBPpxqLBdUXblMGkCwadr.hsNVyJk04A3hb4Fcjn79YeYzAtYCZzC', 'kstrauss0', 'Rosa', 'Strauss', 'kstrauss0');
 insert into `usuario` (tipo, id, email, password, dni,first_name, last_name, username) values ('C',2, 'cfeldstern1@ucoz.ru', '$2a$10$xBPpxqLBdUXblMGkCwadr.hsNVyJk04A3hb4Fcjn79YeYzAtYCZzC', 'ekornel3','Elliott', 'Kornel', 'ekornel3');
-insert into `usuario` (tipo, id, email, password, ruc, nombre,direccion,imagen,puntuacion,id_tipo_negocio, username)  values ('N',3, 'alex@listo.com','$2a$10$xBPpxqLBdUXblMGkCwadr.hsNVyJk04A3hb4Fcjn79YeYzAtYCZzC', '21604816111','Bodega Margarita', "Av Marina 123",'bdm.jpg', 76,1,'bodmarga');
-insert into `usuario` (tipo, id, email, password, ruc, nombre,direccion,imagen,puntuacion,id_tipo_negocio, username)  values ('N',4, 'mcastro2@utmo.com','$2a$10$xBPpxqLBdUXblMGkCwadr.hsNVyJk04A3hb4Fcjn79YeYzAtYCZzC', '11604816111','Cicala y Catita', "Calle Las Flores 33", 'ccc.jpg', 87,1,'cicala');
-insert into `usuario` (tipo, id, email, password, ruc, nombre,direccion,imagen,puntuacion,id_tipo_negocio, username)  values ('N',5, 'osstern100@bing.com','$2a$10$xBPpxqLBdUXblMGkCwadr.hsNVyJk04A3hb4Fcjn79YeYzAtYCZzC','21604812111', 'Minimarket Casimiro', "Av Marina 445" ,'mnmcasim.jpg', 98,2,'casimiro');
-insert into `usuario` (tipo, id, email, password, ruc, nombre,direccion,imagen,puntuacion,id_tipo_negocio, username)  values ('N',6, 'mariciell0@bing.com','$2a$10$xBPpxqLBdUXblMGkCwadr.hsNVyJk04A3hb4Fcjn79YeYzAtYCZzC', '21654816121','Repostera Maricielo', "Av Marina 411" ,'bdmc.jpg', 67,2,'reposmari',);
-insert into `usuario` (tipo, id, email, password, ruc, nombre,direccion,imagen,puntuacion,id_tipo_negocio, username)  values ('N',7, 'panaderia@bing.com','$2a$10$xBPpxqLBdUXblMGkCwadr.hsNVyJk04A3hb4Fcjn79YeYzAtYCZzC', '21654816551','Panaderia Rosita', "Av Escardó 660" ,'panaderia.jpg', 65,3,'panrosita');
+insert into `usuario` (tipo, id, email, password, ruc, nombre,direccion,imagen,puntuacion,id_tipo_negocio, username)  values ('N',3, 'administracion@gdm.com','$2a$10$xBPpxqLBdUXblMGkCwadr.hsNVyJk04A3hb4Fcjn79YeYzAtYCZzC', '21604816111','Establecimiento GDM', "Av Marina 123",'gdm.jpg', 76,1,'gdm');
+insert into `usuario` (tipo, id, email, password, ruc, nombre,direccion,imagen,puntuacion,id_tipo_negocio, username)  values ('N',4, 'mcastro2@utmo.com','$2a$10$xBPpxqLBdUXblMGkCwadr.hsNVyJk04A3hb4Fcjn79YeYzAtYCZzC', '11604816111','Unidad Textil Maranga Oficial', "Calle Las Flores 33", 'ccc.jpg', 87,1,'maranga');
+insert into `usuario` (tipo, id, email, password, ruc, nombre,direccion,imagen,puntuacion,id_tipo_negocio, username)  values ('N',5, 'osstern100@bing.com','$2a$10$xBPpxqLBdUXblMGkCwadr.hsNVyJk04A3hb4Fcjn79YeYzAtYCZzC','21604812111', 'Textiles Casimiro ', "Av Marina 445" ,'mnmcasim.jpg', 98,2,'casimiro');
+insert into `usuario` (tipo, id, email, password, ruc, nombre,direccion,imagen,puntuacion,id_tipo_negocio, username)  values ('N',6, 'mariciell0@bing.com','$2a$10$xBPpxqLBdUXblMGkCwadr.hsNVyJk04A3hb4Fcjn79YeYzAtYCZzC', '21654816121',' Textiles Mar y Cielo', "Av Marina 411" ,'bdmc.jpg', 67,2,'tindmari',);
+insert into `usuario` (tipo, id, email, password, ruc, nombre,direccion,imagen,puntuacion,id_tipo_negocio, username)  values ('N',7, 'panaderia@bing.com','$2a$10$xBPpxqLBdUXblMGkCwadr.hsNVyJk04A3hb4Fcjn79YeYzAtYCZzC', '21654816551','Emprendimiento Rosita', "Av Escardó 450" ,'rosita.jpg', 65,3,'panrosita');
 
 
-insert into `categoria` (id, nombre, descripcion) values (1,'Lacteo','Productos derivados de la leche');
-insert into `categoria` (id, nombre, descripcion) values (2,'Galleta Dulce','Galletas empaquetadas de sabores dulces');
-insert into `categoria` (id, nombre, descripcion) values (3,'Snack','Snacks empaquetadas, pequeños o grandes');
-insert into `categoria` (id, nombre, descripcion) values (4,'Bebidas','Productos bebibles que incluye gaseosas, refrescos, etc');
+insert into `categoria` (id, nombre, descripcion) values (1,'Camisas F/I','Incluye: Camisa Formal o Informal, manga larga o corta');
+insert into `categoria` (id, nombre, descripcion) values (2,'Calzado','Incluye: Zapatos, zapatillas, botines, etc');
+insert into `categoria` (id, nombre, descripcion) values (3,'Pantalones','Inclye: Jeans o Pantalones informales');
+insert into `categoria` (id, nombre, descripcion) values (4,'Accesorios','Incluye: ');
 
-insert into `producto` (id, nombre, marca,precio,puntuacion,id_categoria,id_negocio) values (1,'Tarro de Leche Gloria Azul','Gloria', 3.50, 78,1,3 );
-insert into `producto` (id, nombre, marca,precio,puntuacion,id_categoria,id_negocio) values (2,'Tarro de Leche Gloria Roja','Gloria', 3.80, 75,1,3 );
-insert into `producto` (id, nombre, marca,precio,puntuacion,id_categoria,id_negocio) values (3,'Empaque Queso Crema','Philadelphia', 7.50 , 68,1,3 );
+insert into `producto` (id, nombre, marca,precio,puntuacion,id_categoria,id_negocio) values (1,'Camiseta Azul','BB', 35.00, 78,1,3 );
+insert into `producto` (id, nombre, marca,precio,puntuacion,id_categoria,id_negocio) values (2,'Camisa Formal Azul ,'BB', 57.00, 75,1,3 );
+insert into `producto` (id, nombre, marca,precio,puntuacion,id_categoria,id_negocio) values (3,'Pantalon Jean Clásico','BB', 70.00 , 68,3,3 );
 
-insert into `producto` (id, nombre, marca,precio,puntuacion,id_categoria,id_negocio) values (4,'Tarro de Leche Gloria','Gloria', 3.50,  78,1,4 );
-insert into `producto` (id, nombre, marca,precio,puntuacion,id_categoria,id_negocio) values (5,'Leche Condensada','Gloria', 5.00,  89,1,4 );
+insert into `producto` (id, nombre, marca,precio,puntuacion,id_categoria,id_negocio) values (4,'Zapato de Vestir','XX', 53.50,  78,1,4 );
+insert into `producto` (id, nombre, marca,precio,puntuacion,id_categoria,id_negocio) values (5,'Zapatilla Azul ','Naki', 45.00,  89,1,4 );
 
-insert into `producto` (id, nombre, marca,precio,puntuacion,id_categoria,id_negocio) values (6,'Galleta Picaras Clásicas 6 u','Winters', 3.00,  87,2,3 );
-insert into `producto` (id, nombre, marca,precio,puntuacion,id_categoria,id_negocio) values (7,'Galleta Picaras Extremas 6 u','Winters', 3.00,  89,2,3 );
-insert into `producto` (id, nombre, marca,precio,puntuacion,id_categoria,id_negocio) values (8,'Paquete Doritos 210g','Frito-Lay', 8.40 , 78,3,3 );
-insert into `producto` (id, nombre, marca,precio,puntuacion,id_categoria,id_negocio) values (9,'Paquete Cheetos 200g','Frito-Lay', 7.00 , 86,3,3 );
+insert into `producto` (id, nombre, marca,precio,puntuacion,id_categoria,id_negocio) values (6,'Shorts de Verano Verdes','Livi', 47.00,  87,3,3 );
+insert into `producto` (id, nombre, marca,precio,puntuacion,id_categoria,id_negocio) values (7,'Shorts de Verano Azules','Livi', 59.99,  89,3,3 );
+insert into `producto` (id, nombre, marca,precio,puntuacion,id_categoria,id_negocio) values (8,'Jean Clásico Slim','PP', 98.00 , 78,3,3 );
+insert into `producto` (id, nombre, marca,precio,puntuacion,id_categoria,id_negocio) values (9,'Pantalon de Vestir','PP', 125.00 , 86,3,3 );
 
-insert into `producto` (id, nombre, marca,precio,puntuacion,id_categoria,id_negocio) values (10,'Paquete Picaras Clásicas 6 u','Winters', 3.20,  84,2,4 );
-insert into `producto` (id, nombre, marca,precio,puntuacion,id_categoria,id_negocio) values (11,'Paquete Cheetos Grande (200g)','Frito-Lay', 7.50 , 67,3,4 );
+insert into `producto` (id, nombre, marca,precio,puntuacion,id_categoria,id_negocio) values (10,'Sandalias','SS', 45.90,  84,2,4 );
+insert into `producto` (id, nombre, marca,precio,puntuacion,id_categoria,id_negocio) values (11,'Pantalón corto','SS', 57.50 , 67,3,4 );

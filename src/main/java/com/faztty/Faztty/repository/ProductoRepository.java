@@ -18,4 +18,7 @@ public interface ProductoRepository extends CrudRepository<Producto, Long>{
 
 	Iterable<Producto> findAllByNegocioOrderByPuntuacionAsc(Negocio n);
 
+
+	Iterable<Producto> findAllByNegocioOrderByIdAsc(Negocio n);
+
 }
