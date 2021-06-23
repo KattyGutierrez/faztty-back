@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -114,9 +115,9 @@ public class NegocioController {
 		return pService.modificarProducto( pb,id_producto);
 	}
 	
-	@PostMapping({"/eliminarProducto/"})
-	public Producto eliminarProducto(@RequestBody ProductoBean pb) {
-		return pService.eliminarProducto( pb.getId());
+	@DeleteMapping({"/eliminarProducto/{id_producto}"})
+	public Producto eliminarProducto(@PathVariable Long id_producto) {
+		return pService.eliminarProducto(id_producto);
 	}
 	
 	@PostMapping({"/autentica"})
