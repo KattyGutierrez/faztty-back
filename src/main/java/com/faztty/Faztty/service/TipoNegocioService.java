@@ -24,6 +24,6 @@ public class TipoNegocioService {
 		tn.setNombre(tn.getNombre());
 		repo.save(tne);
 		
-		return tn;
+		return tne;
 	}
 }
