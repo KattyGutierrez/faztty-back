@@ -20,8 +20,8 @@ public class TipoNegocioService {
 	}
 	public TipoNegocio modificarTipoNegocio(TipoNegocio tn, Long id) {
 		TipoNegocio tne= repo.findById(id).get();
-		tn.setDescripcion(tn.getDescripcion());
-		tn.setNombre(tn.getNombre());
+		tne.setDescripcion(tn.getDescripcion());
+		tne.setNombre(tn.getNombre());
 		repo.save(tne);
 		
 		return tne;
