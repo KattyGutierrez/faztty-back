@@ -137,6 +137,10 @@ public class NegocioController {
 		return pService.downloadFoto(id_producto);
 	}
 	
+	@PostMapping({"/modificarTipoNegocio/{id_tipo}"})
+	public TipoNegocio modificarTipoNegocio(@PathVariable Long id_tipo, @RequestBody TipoNegocio tn) {
+		return tnService.modificarTipoNegocio( tn,id_tipo);
+	}
 	
 	//////////////////////////////////////////////////////////////
 	@GetMapping({"/principal/{id}"})
